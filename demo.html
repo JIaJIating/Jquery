@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<style>
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	ul{
+		width: 100px;
+		height: 150px;
+		background: #ccc;
+		border-radius: 15px;
+		position: absolute;
+		display: none;
+		list-style: none;
+	}
+	ul li{
+		text-align: center;
+		font-weight: bold;
+		line-height: 29px;
+		color: #fff;
+	}
+</style>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"> </script>
+</head>
+<body>
+	<ul>
+		<li><a href="https://www.baidu.com" target="_blnak">百度</a></li>
+		<li>第一菜单</li>
+		<li>第一菜单</li>
+		<li>第一菜单</li>
+		<li>第一菜单</li>
+	</ul>
+</body>
+<script>
+//  区分鼠标点击的是左键还是右键、或者滚轮（以前有兼容性问题）
+// $(document).mousedown(function(event){
+// 	code=event.button;
+// 	// alert(code);
+// 	if(code==2){
+// 		alert('不要点右键！');
+// 	}
+// });
+//  做一个自己的右键菜单
+// $(document).mousemove(function(event){
+// $(document).contextmenu(function(event){
+// 	x=event.clientX;
+// 	y=event.clientY;
+// 	// alert(x+'|'+y); alert是屏幕级别的，容易卡屏
+// 	// document.title=x+'|'+y;   获得鼠标所处的坐标
+	
+// 	code=event.button;
+
+// 	if(code==2){
+// 		$('ul').show().css({'left':x+'px'，'top':y+'px'});
+// 		return false; //阻止mousemove事件,不行，click也不行，所以用contextmenu()事件
+// 	}
+// });
+$(document).contextmenu(function(event){
+	x=event.clientX;
+	y=event.clientY;
+	code=event.button;
+	if(code==2){
+		$('ul').show().css({'left':x+'px','top':y+'px'});
+		return false;
+	}
+});
+</script>
+</html>
