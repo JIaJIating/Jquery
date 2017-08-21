@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件处理</title>
+	<style>
+	*{
+		font-family: 微软雅黑;
+	}
+	
+	</style>
+	<script src="jquery.js"> </script>
+</head>
+<body>
+	<p>bind()、unbind()用来解除绑定事件</p>
+	<p>one()只绑定一次事件</p>
+	<div>
+		<img src="c.jpg" alt="">
+	</div>
+	<br>
+	<button>添加单击事件</button>
+	<button>删除单击事件</button>
+</body>
+<script>
+i=0;
+$('button').eq(0).click(function(){
+	$('img').bind('click',function(){
+		if(i%2==0){
+			this.src="jiu.jpg";
+		}else{
+			this.src="c.jpg";
+		}
+		i++;
+	});
+});
+$('button').eq(1).click(function(){
+	$('img').unbind('click');
+	// $('img').unbind(); 解决img上绑定的所有事件
+});
+// one()只绑定一次事件
+// i=0;
+// 	$('img').one('click',function(){
+// 		if(i%2==0){
+// 			this.src="jiu.jpg";
+// 		}else{
+// 			this.src="c.jpg";
+// 		}
+// 		i++;
+// 	});	
+// 	或者如下
+// $('img').one('click',function(){
+		
+// 			this.src="jiu.jpg";
+		
+// 	});
+</script> 
+</html>
