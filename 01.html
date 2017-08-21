@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<style>
+	*{
+		font-family: 微软雅黑;
+	}
+	#div1{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		border-radius: 355px;
+		border: 5px solid #ccc;
+		overflow: hidden;
+	}
+	</style>
+	<script src="jquery.js"> </script>
+</head>
+<body>
+	<div id="div1" >
+		<img src="c.jpg">
+	</div>
+</body>
+<script>
+// function drag(obj){
+// 	// mousedown:鼠标按下事件
+// 	obj.bind('mousedown',start);  //bind里面第一个是事件名，第二个是事件函数  
+
+// 	function star(event) {
+// 		deltaX=event.clientX-obj.offset().left; //鼠标的坐标减去div此时离浏览器左上角的坐标
+// 		deltaY=event.clientY-obj.offset().top;  //减后得到图片未来的坐标
+
+// 		$(document).bind('mousemove',move);
+// 		$(document).bind('mouseup',stop);
+// 		return false;  //当鼠标点下，单纯操作绑定事件，其他由于点击带来的行为先取消
+// 	}
+// 	function move(event) {
+// 		obj.css({
+// 			'left':(event.clientX-deltaX)+'px',
+// 			'top':(event.clientY-deltaY)+'px'
+// 		})
+// 		return false;
+// 	}
+
+// 	function stop() {
+// 		$(document).unbind('mousemove',move);
+// 		$(document).unbind('mouseup',stop);
+// 	}
+// }
+// obj=$('#div1');
+// drag(obj);
+function drag(obj){
+ 	obj.bind('mousedown',start);
+ 	function start(event){
+ 		deltaX=event.clientX-obj.offset().left;
+ 		deltaY=event.clientY-obj.offset().top;
+ 		$(document).bind('mousemove',move);
+ 		$(document).bind('mouseup',stop);
+ 		return false;
+ 	}
+ 	function move(event){
+ 		obj.css({
+ 			'left':(event.clientX-deltaX)+'px',
+ 			'top':(event.clientY-deltaY)+'px'
+ 		})
+	    return false;
+ 	}
+ 	function stop() {
+ 		$(document).unbind('mousemove',move);
+ 		$(document).unbind('mouseup',stop);
+ 	}
+}
+obj=$('#div1');
+drag(obj);
+
+</script> 
+</html>
