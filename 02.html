@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>事件处理</title>
+	<title>点赞</title>
 	<style>
 	*{
 		font-family: 微软雅黑;
@@ -12,46 +12,31 @@
 	<script src="jquery.js"> </script>
 </head>
 <body>
-	<p>bind()、unbind()用来解除绑定事件</p>
-	<p>one()只绑定一次事件</p>
 	<div>
 		<img src="c.jpg" alt="">
 	</div>
 	<br>
-	<button>添加单击事件</button>
-	<button>删除单击事件</button>
+	<button>点赞(<span>50</span>)</button> 
+	<!-- 因为要控制50，所以圆括号加在了span外面 -->
 </body>
 <script>
+// 用one来实现点赞（加一次）功能
+// $('button').one('click',function(){     //加了one之后就只能加一次1
+// 	val=parseInt($('span').html())+1;  //找到span获取里面的值将其转为整型，再赋给val
+// 	$('span').html(val);          
+// 	$(this).css({'background':'#00f','color':'white'});
+// });
+// 一种古老的实现办法
 i=0;
-$('button').eq(0).click(function(){
-	$('img').bind('click',function(){
-		if(i%2==0){
-			this.src="jiu.jpg";
-		}else{
-			this.src="c.jpg";
-		}
-		i++;
-	});
+$('button').click(function(){     //加了one之后就只能加一次1
+	if(i==0){
+		val=parseInt($('span').html())+1;  //找到span获取里面的值将其转为整型，再赋给val
+		$('span').html(val);          
+		$(this).css({'background':'#00f','color':'#fff'});
+	}else{
+		alert('您已经点过赞了！不要贪杯！');
+	}
+	i++;
 });
-$('button').eq(1).click(function(){
-	$('img').unbind('click');
-	// $('img').unbind(); 解决img上绑定的所有事件
-});
-// one()只绑定一次事件
-// i=0;
-// 	$('img').one('click',function(){
-// 		if(i%2==0){
-// 			this.src="jiu.jpg";
-// 		}else{
-// 			this.src="c.jpg";
-// 		}
-// 		i++;
-// 	});	
-// 	或者如下
-// $('img').one('click',function(){
-		
-// 			this.src="jiu.jpg";
-		
-// 	});
 </script> 
 </html>
